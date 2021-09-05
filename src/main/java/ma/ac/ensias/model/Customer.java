@@ -17,16 +17,16 @@ public class Customer  implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false,updatable = false)
 	private Long idCustomer;
-	private String fName;
-	private String lName;
+	private String fname;
+	private String lname;
 	@Column(nullable = false,unique = true)
-	private String cINE;
+	private String cine;
 	private String email;
 	private String account_fb;
 	private String account_insta;
 	private String account_twitter;
 	private String phone;
-	private String jobTitle;
+	private String jobtitle;
 	private String address;
 	@Column(nullable = false,updatable = false)
 	private String subscriptionCode;

@@ -35,10 +35,34 @@ public class CustomerController {
 	        return new ResponseEntity<>(customers, HttpStatus.OK);
 	    }
 	  
-	    @GetMapping("/find/{id}")
+	    @GetMapping("/find/id/{id}")
 	    public ResponseEntity<Customer> getCustomerById (@PathVariable("id") Long id) {
 	    	Customer customer = customerService.getCustomerById(id);
 	        return new ResponseEntity<>(customer, HttpStatus.OK);
+	    }
+	    
+	  	@GetMapping("/find/cine/{p}")
+	    public ResponseEntity<List<Customer>> getCustomersByCine (@PathVariable("p") String p) {
+	        List<Customer> customers = customerService.getCustomersByCine(p);
+	        return new ResponseEntity<>(customers, HttpStatus.OK);
+	    }
+	  	
+	  	@GetMapping("/find/fname/{p}")
+	    public ResponseEntity<List<Customer>> getCustomersByFname (@PathVariable("p") String p) {
+	        List<Customer> customers = customerService.getCustomersByFname(p);
+	        return new ResponseEntity<>(customers, HttpStatus.OK);
+	    }
+	  	
+	  	@GetMapping("/find/lname/{p}")
+	    public ResponseEntity<List<Customer>> getCustomersByLname (@PathVariable("p") String p) {
+	        List<Customer> customers = customerService.getCustomersByLname(p);
+	        return new ResponseEntity<>(customers, HttpStatus.OK);
+	    }
+	  	
+	  	@GetMapping("/find/job/{p}")
+	    public ResponseEntity<List<Customer>> getCustomersByJob (@PathVariable("p") String p) {
+	        List<Customer> customers = customerService.getCustomersByJobTitle(p);
+	        return new ResponseEntity<>(customers, HttpStatus.OK);
 	    }
 	    
 	    @PostMapping("/add")

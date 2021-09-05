@@ -44,6 +44,26 @@ public class CustomerServiceImpl implements ICustomerService{
 		return customerRespository.findCustomerByIdCustomer(id)
 				.orElseThrow(()-> new EntityNotFoundException("Aucun client tourvé avec id :"+id));
 	}
+
+	@Override
+	public List<Customer> getCustomersByFname(String fname) {
+		return customerRespository.findByFnameContainingIgnoreCase(fname).orElseThrow(()-> new EntityNotFoundException("Aucun client tourvé avec :"+fname));
+	}
+
+	@Override
+	public List<Customer> getCustomersByLname(String lname) {
+		return customerRespository.findByLnameContainingIgnoreCase(lname).orElseThrow(()-> new EntityNotFoundException("Aucun client tourvé avec :"+lname));
+	}
+
+	@Override
+	public List<Customer> getCustomersByCine(String cine) {
+		return customerRespository.findByCineContainingIgnoreCase(cine).orElseThrow(()-> new EntityNotFoundException("Aucun client tourvé avec :"+cine));
+	}
+
+	@Override
+	public List<Customer> getCustomersByJobTitle(String job) {
+		return customerRespository.findByJobtitleContainingIgnoreCase(job).orElseThrow(()-> new EntityNotFoundException("Aucun client tourvé avec :"+job));
+	}
 	
 	
 
