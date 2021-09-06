@@ -28,7 +28,6 @@ public class CompteurController {
 	
 	private final ICustomerService customerService;
 	
-	
 	  	@GetMapping("/all")
 	    public ResponseEntity<List<Customer>> getAllCustomers () {
 	        List<Customer> customers = customerService.getAllCustomers();
