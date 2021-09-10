@@ -19,6 +19,7 @@ public class CompteurServiceImpl implements ICompteurService{
 
 	@Override
 	public Compteur addCompteur(Compteur compteur) {
+		compteur.setIdCompteur(null);
 		compteur.setNumCompteur("C"+UUID.randomUUID().toString());
 		return compteurRespository.save(compteur);
 	}

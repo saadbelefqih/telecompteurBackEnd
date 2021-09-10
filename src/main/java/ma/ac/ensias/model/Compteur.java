@@ -32,6 +32,7 @@ public class Compteur  implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerId",nullable = true)
 	private Customer customer;
+	private String photoName;
 	
 	
 

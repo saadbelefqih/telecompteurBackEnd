@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import ma.ac.ensias.model.Customer;
 import ma.ac.ensias.service.ICustomerService;
-@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4300/", maxAge = 3600)
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/customer")
