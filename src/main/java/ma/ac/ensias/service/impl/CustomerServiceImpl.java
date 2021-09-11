@@ -1,7 +1,6 @@
 package ma.ac.ensias.service.impl;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,6 @@ public class CustomerServiceImpl implements ICustomerService{
 
 	@Override
 	public Customer addCustomer(Customer customer) {
-		customer.setSubscriptionCode(UUID.randomUUID().toString());
 		return customerRespository.save(customer);
 	}
 

@@ -28,8 +28,6 @@ public class Customer  implements Serializable{
 	private String phone;
 	private String jobtitle;
 	private String address;
-	@Column(nullable = false,updatable = false)
-	private String subscriptionCode;
 	private String imageUrl;
 	
 

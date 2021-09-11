@@ -22,15 +22,13 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.RequiredArgsConstructor;
 import ma.ac.ensias.model.Compteur;
 import ma.ac.ensias.service.ICompteurService;
-@CrossOrigin(origins = "http://localhost:4300/", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/compteur")
 public class CompteurController {
 	
 	private final ICompteurService compteurService;
-	
-	
 	
 	
 	  	@GetMapping("/all")
@@ -43,6 +41,43 @@ public class CompteurController {
 	    public ResponseEntity<Compteur> getCompteurById (@PathVariable("id") Long id) {
 	    	Compteur compteur = compteurService.getCompteurById(id);
 	        return new ResponseEntity<>(compteur, HttpStatus.OK);
+	    }
+	    
+	    @GetMapping("/find/customer/{id}")
+	    public ResponseEntity<List<Compteur>> getCompteurByCustomer (@PathVariable("id") Long idCustomer) {
+	    	List<Compteur> compteurs = compteurService.getCompteursByCustomerID(idCustomer);
+	        return new ResponseEntity<>(compteurs, HttpStatus.OK);
+	    }
+	    
+	    
+	    @GetMapping("/find/customer/cine/{c}")
+	    public ResponseEntity<List<Compteur>> getCompteurByCustomerCine (@PathVariable("c") String cine) {
+	    	List<Compteur> compteurs = compteurService.getCompteursByCustomerCine(cine);
+	        return new ResponseEntity<>(compteurs, HttpStatus.OK);
+	    }
+	    
+	    @GetMapping("/find/customer/lname/{p}")
+	    public ResponseEntity<List<Compteur>> getCompteurByCustomerLname (@PathVariable("p") String p) {
+	    	List<Compteur> compteurs = compteurService.getCompteursByCustomerLname(p);
+	        return new ResponseEntity<>(compteurs, HttpStatus.OK);
+	    }
+	    
+	    @GetMapping("/find/customer/fname/{p}")
+	    public ResponseEntity<List<Compteur>> getCompteurByCustomerFname (@PathVariable("p") String p) {
+	    	List<Compteur> compteurs = compteurService.getCompteursByCustomerFname(p);
+	        return new ResponseEntity<>(compteurs, HttpStatus.OK);
+	    }
+	    
+	    @GetMapping("/find/subscription/{p}")
+	    public ResponseEntity<List<Compteur>> getCompteurByCustomerSubscription (@PathVariable("p") String p) {
+	    	List<Compteur> compteurs = compteurService.getCompteursBySubscriptionCode(p);
+	        return new ResponseEntity<>(compteurs, HttpStatus.OK);
+	    }
+	    
+	    @GetMapping("/find/marque/{p}")
+	    public ResponseEntity<List<Compteur>> getCompteurByCustomerMarque (@PathVariable("p") String p) {
+	    	List<Compteur> compteurs = compteurService.getCompteursByMarque(p);
+	        return new ResponseEntity<>(compteurs, HttpStatus.OK);
 	    }
 	    	  		    
 	    @PostMapping("/add")
@@ -67,7 +102,7 @@ public class CompteurController {
 		public void uploadPhoto(MultipartFile file , @PathVariable("id") Long id) throws Exception
 		{
 			Compteur compteur = compteurService.getCompteurById(id);
-			String pe = file.getOriginalFilename();
+			
 			if(compteur != null)
 			{
 			compteur.setPhotoName(file.getOriginalFilename());
